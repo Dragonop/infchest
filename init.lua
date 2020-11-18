@@ -19,7 +19,11 @@ local infchest_formspec =
 
 minetest.register_node("infchest:infchest", {
 	description = "Infinite Chest",
-	tiles = {"infchest_infchest"},
+	tiles = {
+		"infchest_infchest_top.png", "infchest_infchest_bottom.png",
+		"infchest_infchest_side.png", "infchest_infchest_side.png",
+		"infchest_infchest_side.png", "infchest_infchest_front.png"
+	},
 	paramtype2 = "facedir",
 	groups = {choppy = 1, oddly_breakable_by_hand = 1},
 	legacy_facedir_simple = true,
