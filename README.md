@@ -7,5 +7,8 @@ Check privs (only allow players with give priv to place and take items from the 
 
 Textures.
 
-### Licence
-Code by Dragonop (CC-BY-SA 4.0)
+#### License for code
+Code by Dragonop (LGPLv3)
+
+#### License for media
+Textures by Dragonop (CC-BY-SA 4.0)
