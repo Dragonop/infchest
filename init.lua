@@ -19,7 +19,7 @@ local infchest_formspec =
 
 minetest.register_node("infchest:infchest", {
 	description = "Infinite Chest",
-	tiles = {"claycrafter_claycrafter_front"},
+	tiles = {"infchest_infchest"},
 	paramtype2 = "facedir",
 	groups = {choppy = 1, oddly_breakable_by_hand = 1},
 	legacy_facedir_simple = true,
