@@ -14,6 +14,12 @@ local infchest_formspec =
 	"listring[current_player;main]"..
 	default.get_hotbar_bg(0, 4.25)
 
+-- Priv
+minetest.register_privilege("infchest", {
+	desciption = "Can configure Infinite Chests",
+	give_to_singleplayer = false,
+	})
+
 -- Node callback functions
 local function can_dig(pos, player) -- Do not allow node to be dug if 'src' has item
 	local meta = minetest.get_meta(pos);
@@ -30,7 +36,7 @@ local function allow_metadata_inventory_put(pos, listname, index, stack, player)
 	
 	if listname == "dst" then
 		return stack:get_count()
-	elseif listname == "src" and minetest.check_player_privs(player:get_player_name(),{give=true}) and inv:is_empty("src") then
+	elseif listname == "src" and minetest.check_player_privs(player:get_player_name(),{infchest=true}) and inv:is_empty("src") then
 		return 1 -- Only allow one item to be selected
 	else
 		return 0
@@ -44,7 +50,7 @@ local function allow_metadata_inventory_move(pos, from_list, from_index, to_list
 	
 	if from_list == "dst" and to_list == "dst" then
 		return allow_metadata_inventory_put(pos, to_list, to_index, stack, player)
-	elseif minetest.check_player_privs(player:get_player_name(),{give=true}) then
+	elseif minetest.check_player_privs(player:get_player_name(),{infchest=true}) then
 		return allow_metadata_inventory_put(pos, to_list, to_index, stack, player)
 	else 
 		return 0
@@ -55,7 +61,7 @@ local function allow_metadata_inventory_take(pos, listname, index, stack, player
 	-- if minetest.is_protected(pos, player:get_player_name()) then return 0 end
 	if listname == "dst" then
 		return stack:get_count()
-	elseif listname == "src" and minetest.check_player_privs(player:get_player_name(),{give=true}) then
+	elseif listname == "src" and minetest.check_player_privs(player:get_player_name(),{infchest=true}) then
 		return stack:get_count()
 	else 
 		return 0
